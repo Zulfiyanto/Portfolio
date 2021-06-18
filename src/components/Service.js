@@ -6,10 +6,18 @@ import home2 from "../img/home2.png";
 
 import { About, Description } from "../style";
 import styled from "styled-components";
+import { useScroll } from "./useScroll";
+import { scrollReveal } from "./Animation";
 
 const ServicesSection = () => {
+	const [element, controls] = useScroll();
 	return (
-		<Service>
+		<Service
+			variants={scrollReveal}
+			animate={controls}
+			initial="hidden"
+			ref={element}
+		>
 			<Description>
 				<h2>
 					High <span>Quality</span> Services
@@ -17,14 +25,14 @@ const ServicesSection = () => {
 				<Cards>
 					<Card>
 						<div className="icon">
-							<img src={clock} alt="image" />
+							<img src={clock} alt="clock" />
 							<h3>Efficient</h3>
 						</div>
 						<p>Lorem ipsum dolor sit amet</p>
 					</Card>
 					<Card>
 						<div className="icon">
-							<img src={teamwork} alt="image" />
+							<img src={teamwork} alt="teamwork" />
 							<h3>TeamWork</h3>
 						</div>
 						<p>
@@ -34,7 +42,7 @@ const ServicesSection = () => {
 					</Card>
 					<Card>
 						<div className="icon">
-							<img src={diagram} alt="image" />
+							<img src={diagram} alt="diagram" />
 							<h3>Diagram</h3>
 						</div>
 						<p>
@@ -44,7 +52,7 @@ const ServicesSection = () => {
 					</Card>
 					<Card>
 						<div className="icon">
-							<img src={money} alt="image" />
+							<img src={money} alt="money" />
 							<h3>Affordable</h3>
 						</div>
 						<p>

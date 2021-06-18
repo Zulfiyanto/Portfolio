@@ -12,6 +12,7 @@ body{
        background:#1b1b1b;
        font-family: 'Lobster', cursive;
        font-family: 'Poppins', sans-serif;
+       overflow-x: hidden;
 }
 
 button{
