@@ -62,9 +62,9 @@ const ServicesSection = () => {
 					</Card>
 				</Cards>
 			</Description>
-			<div className="image">
+			<Image>
 				<img src={home2} alt="home" />
-			</div>
+			</Image>
 		</Service>
 	);
 };
@@ -82,6 +82,9 @@ const Service = styled(About)`
 const Cards = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	@media (max-width: 1300px) {
+		justify-content: center;
+	}
 `;
 
 const Card = styled.div`
@@ -101,6 +104,19 @@ const Card = styled.div`
 		background: white;
 		color: black;
 		padding: 1rem;
+	}
+`;
+
+const Image = styled.div`
+	@media (max-width: 1000px) {
+		justify-content: center;
+		width: 100%;
+	}
+	img {
+		@media (max-width: 1000px) {
+			width: 100%;
+			height: 80vh;
+		}
 	}
 `;
 

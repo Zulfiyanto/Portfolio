@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = () => {
+	const { pathname } = useLocation();
 	return (
 		<StyledNav>
 			<h1>
@@ -12,12 +14,27 @@ const Nav = () => {
 			<ul>
 				<li>
 					<Link to="/">About</Link>
+					<Line
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{ width: pathname === "/" ? "90%" : "0%" }}
+					></Line>
 				</li>
 				<li>
 					<Link to="/work">Work</Link>
+					<Line
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{ width: pathname === "/work" ? "90%" : "0%" }}
+					></Line>
 				</li>
 				<li>
 					<Link to="/contact">Contact Us</Link>
+					<Line
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{ width: pathname === "/contact" ? "90%" : "0%" }}
+					></Line>
 				</li>
 			</ul>
 		</StyledNav>
@@ -42,6 +59,8 @@ const StyledNav = styled.nav`
 	ul {
 		display: flex;
 		list-style: none;
+		justify-content: space-between;
+		width: 30%;
 	}
 	#logo {
 		font-size: 1.5rem;
@@ -49,8 +68,36 @@ const StyledNav = styled.nav`
 		font-weight: lighter;
 	}
 	li {
-		padding-left: 4rem;
 		position: relative;
+	}
+
+	@media (max-width: 1000px) {
+		flex-direction: column;
+		padding: 0rem 1rem;
+		#logo {
+			display: inline-block;
+			margin: 1rem;
+		}
+		ul {
+			padding: 2rem;
+			justify-content: space-around;
+			width: 100%;
+			li {
+				padding: 0;
+			}
+		}
+	}
+`;
+
+const Line = styled(motion.div)`
+	height: 0.3rem;
+	background: #23d997;
+	width: 0%;
+	position: absolute;
+	bottom: -50%;
+	left: 0%;
+	@media (max-width: 1300px) {
+		left: 0%;
 	}
 `;
 
